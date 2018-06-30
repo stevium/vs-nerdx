@@ -1,5 +1,5 @@
 # VsNerdX
-[NERDTree](https://github.com/scrooloose/nerdtree) inspired Solution Explorer for Visual Studio. Provides Vim-like navigation and more.
+[NERDTree](https://github.com/scrooloose/nerdtree) inspired Solution Explorer for Visual Studio. It integrates Vim-like bindings for tree navigation and manipulation into Visual Studio's hierarchy windows.
 
 # Installation
 Simplest way to install is through the **Extension Manager** or the **[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mstevius.VsNerdX)**.
