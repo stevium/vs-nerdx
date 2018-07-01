@@ -2,7 +2,7 @@
 [NERDTree](https://github.com/scrooloose/nerdtree) inspired Solution Explorer for Visual Studio. It integrates Vim-like bindings for tree navigation and manipulation into Visual Studio's hierarchy windows.
 
 # Installation
-Simplest way to install is through the **Extension Manager** or the **[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mstevius.VsNerdX)**.
+Simplest way to install is through the **Extension Manager** or the **[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mstevius.vs-nerdx-solution-explorer)**.
 Or if building from source, use the resulting `VsNerdX.vsix`.
 
 Currently supported Visual Studio version is 2017.
