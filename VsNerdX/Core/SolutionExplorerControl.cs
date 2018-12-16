@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -17,6 +20,12 @@ namespace VsNerdX.Core
 
         private readonly ILogger logger;
         private readonly VsNerdXPackage vsNerdXPackage;
+
+        private Panel  ContentGrid = null;
+        private ContentPresenter ContentPresenter;
+        private ToolWindowPane SolutionPane;
+        private Grid NavigatiorFrame;
+        private StackPanel HelpStackPanel;
 
         public IVsUIHierarchyWindow SolutionHierarchy { get; set; }
 
@@ -153,36 +162,121 @@ namespace VsNerdX.Core
         {
             SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(vsNerdXPackage, VSConstants.StandardToolWindows.SolutionExplorer);
 
-            if (!(SolutionHierarchy is WindowPane solutionPane))
+            SolutionPane = SolutionHierarchy as ToolWindowPane;
+            if (!(SolutionPane != null))
+            {
+                return null;
+            }
+                
+            ContentGrid = SolutionPane.Content as Panel;
+            if (!(ContentGrid != null) || ContentGrid.Children.Count == 0)
             {
                 return null;
             }
 
-            if (!(solutionPane.Content is Panel paneContent) || paneContent.Children.Count == 0)
-            {
-                return null;
-            }
-
-            if (!(paneContent.Children[0] is ContentPresenter contentPresenter))
+            ContentPresenter = ContentGrid.Children[0] as ContentPresenter;
+            if (!(ContentPresenter != null))
             {
                 return null;
             }
 
             ListBox listBox = null;
 
-            switch (contentPresenter.Content.GetType().FullName)
+            switch (ContentPresenter.Content.GetType().FullName)
             {
                 case SolutionPivotNavigator:
-                    listBox = contentPresenter.Content.GetType().GetProperties()
+                    listBox = ContentPresenter.Content.GetType().GetProperties()
                         .Single(p => p.Name == "TreeView" && p.PropertyType.FullName == SolutionPivotTreeView)
-                        .GetValue(contentPresenter.Content) as ListBox;
+                        .GetValue(ContentPresenter.Content) as ListBox;
                     break;
                 case WorkspaceTreeView:
-                    listBox = contentPresenter.Content as ListBox;
+                    listBox = ContentPresenter.Content as ListBox;
                     break;
             }
 
             return listBox;
+        }
+
+        public void ToggleHelp()
+        {
+            GetHierarchyListBox();
+            if (HelpStackPanel == null)
+            {
+                this.ShowHelp();
+                NavigatiorFrame = (Grid) SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
+                NavigatiorFrame.SizeChanged += HierarchyControl_SizeChanged;
+                HierarchyControl_SizeChanged(null, null);
+            }
+            else
+            {
+                this.HideHelp();
+                var navigatiorFrame = (Grid) SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
+                navigatiorFrame.SizeChanged -= HierarchyControl_SizeChanged;
+            }
+        }
+
+        private void HierarchyControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var navigationContent = (ContentPresenter) NavigatiorFrame.GetValue("Content");
+            HelpStackPanel.MaxHeight = navigationContent.ActualHeight;
+            HelpStackPanel.MaxWidth = navigationContent.ActualWidth;
+        }
+
+        private void HideHelp()
+        {
+            ContentGrid.Children.Remove(HelpStackPanel);
+            HelpStackPanel = null;
+        }
+
+        private void ShowHelp()
+        {
+            var scrollView = new ScrollViewer();
+            var textBlock = new TextBlock();
+
+            textBlock.TextWrapping = TextWrapping.Wrap;
+            textBlock.Background = new SolidColorBrush(Colors.WhiteSmoke);
+            textBlock.FontSize = 15;
+            textBlock.FontFamily = new FontFamily("Consolas");
+
+            textBlock.Inlines.AddRange(new Inline [] {
+                new Bold(new Run(" NerdX (2.0.0) Quick Help")), new LineBreak(),
+                new Bold(new Run("=========================")), new LineBreak(),
+                new Bold(new Run(" Directory node mappings")), new LineBreak(),
+                new Run("-------------------------"), new LineBreak(),
+                new Bold(new Run(" o")), new Run(": open & close node"), new LineBreak(),
+                new Bold(new Run(" O")), new Run(": recursively open node"), new LineBreak(),
+                new Bold(new Run(" x")), new Run(": close parent of node"), new LineBreak(),
+                new Bold(new Run(" X")), new Run(": recursively close child nodes"), new LineBreak(), new LineBreak(),
+
+                new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
+                new Run("-------------------------"), new LineBreak(),
+                new Bold(new Run(" P")), new Run(": go to root"), new LineBreak(),
+                new Bold(new Run(" p")), new Run(": go to parent"), new LineBreak(),
+                new Bold(new Run(" j")), new Run(": go to next sibling"), new LineBreak(),
+                new Bold(new Run(" J")), new Run(": go to last child"), new LineBreak(),
+                new Bold(new Run(" k")), new Run(": go to prev sibling"), new LineBreak(),
+                new Bold(new Run(" K")), new Run(": go to first child"), new LineBreak(),
+                new Bold(new Run(" gg")), new Run(": go to top"), new LineBreak(),
+                new Bold(new Run(" G")), new Run(": go to bottom"), new LineBreak(), new LineBreak(),
+
+                new Bold(new Run(" Other mappings")), new LineBreak(),
+                new Run("-------------------------"), new LineBreak(), 
+                new Bold(new Run(" /")), new Run(": Enter Find Mode"), new LineBreak(),
+                new Bold(new Run(" Esc")), new Run(": Exit Find Mode"), new LineBreak(),
+                new Bold(new Run(" ?")), new Run(": Toggle Help")
+            });
+
+            scrollView.Content = textBlock;
+            scrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+
+            HelpStackPanel = new StackPanel();
+            var separator = new Separator();
+            HelpStackPanel.Children.Add(scrollView);
+            HelpStackPanel.Children.Add(separator);
+
+            Grid.SetColumn(HelpStackPanel, 0);
+            Grid.SetRow(HelpStackPanel, 0);
+            ContentGrid.Children.Add(HelpStackPanel);
         }
     }
 }

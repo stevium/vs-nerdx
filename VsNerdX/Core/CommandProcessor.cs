@@ -75,7 +75,7 @@ namespace VsNerdX.Core
             commands.Add(new CommandKey(InputMode.Normal, Keys.G), new GoToTop(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.G | Keys.Shift), new GoToBottom(this._hierarchyControl));
 
-            commands.Add(new CommandKey(InputMode.Normal, Keys.OemQuestion), new EnterFindMode(CommandState.Handled));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.Oem2 | Keys.Shift), new ToggleHelp(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.Divide), new EnterFindMode(CommandState.Handled));
 
             // For now no need to enter Find mode when renaming. Intead use VS-s InRenameMode with ShouldDispatch

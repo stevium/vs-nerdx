@@ -11,6 +11,7 @@
         void GoToLastChild();
         void CloseParentNode();
         void OpenOrCloseNode();
+        void ToggleHelp();
         object GetSelectedItem();
     }
 }
