@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Linq;
 using System.Windows.Controls;
 using Microsoft.VisualStudio;
@@ -36,6 +37,41 @@ namespace VsNerdX.Core
                 listBox.SelectedItem = listBox.Items.GetItemAt(index);
                 EnsureSelection(listBox);
             }
+
+        }
+
+        public void GoToFirstChild()
+        {
+            var listBox = GetHierarchyListBox();
+            var item = listBox.SelectedItem;
+
+            if (item == null) return;
+
+            var parent = item.GetType().GetProperty("Parent")?.GetValue(item);
+            if (parent == null) return;
+
+            var childNodes = parent.GetType().GetProperty("ChildNodes").GetValue(parent);
+            if (childNodes  == null) return;
+
+            var first = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().First();
+            EnsureSelection(listBox);
+        }
+
+        public void GoToLastChild()
+        {
+            var listBox = GetHierarchyListBox();
+            var item = listBox.SelectedItem;
+
+            if (item == null) return;
+
+            var parent = item.GetType().GetProperty("Parent")?.GetValue(item);
+            if (parent == null) return;
+
+            var childNodes = parent.GetType().GetProperty("ChildNodes").GetValue(parent);
+            if (childNodes  == null) return;
+
+            var last = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().Last();
+            EnsureSelection(listBox);
         }
 
         public void GoToParent()

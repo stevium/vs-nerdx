@@ -62,10 +62,12 @@ namespace VsNerdX.Core
         private void InitializeCommands()
         {
             commands.Add(new CommandKey(InputMode.Normal, Keys.X), new CloseParentNode(this._hierarchyControl));
-            commands.Add(new CommandKey(InputMode.Normal, Keys.J), new GoDown(this._hierarchyControl));
-            commands.Add(new CommandKey(InputMode.Normal, Keys.K), new GoUp(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.O), new OpenOrCloseNode(this._hierarchyControl));
 
+            commands.Add(new CommandKey(InputMode.Normal, Keys.J), new GoDown(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.J | Keys.Shift), new GoToLastChild(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.K), new GoUp(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.K | Keys.Shift), new GoToFirtsChild(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.P), new GoToParent(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.P | Keys.Shift), new GoToRoot(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.G), new GoToTop(this._hierarchyControl));

@@ -54,6 +54,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\Navigation\GoToLastChild.cs" />
+    <Compile Include="Command\Navigation\GoToFirstChild.cs" />
     <Compile Include="Command\Navigation\GoToParent.cs" />
     <Compile Include="Command\Navigation\GoToTop.cs" />
     <Compile Include="Core\CommandProcessor.cs" />
