@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Windows.Controls;
@@ -106,6 +106,12 @@ namespace VsNerdX.Core
             if (expandable != true) return;
 
             item.GetType().GetProperty("IsExpanded")?.SetValue(item, expanded != true);
+        }
+
+        public Object GetSelectedItem()
+        {
+            var listBox = GetHierarchyListBox();
+            return listBox.SelectedItem;
         }
 
         public void GoUp()

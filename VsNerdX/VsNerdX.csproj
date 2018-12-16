@@ -54,6 +54,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\Directory\CloseNodeRecursively.cs" />
+    <Compile Include="Command\Directory\OpenNodeRecursively.cs" />
     <Compile Include="Command\Navigation\GoToLastChild.cs" />
     <Compile Include="Command\Navigation\GoToFirstChild.cs" />
     <Compile Include="Command\Navigation\GoToParent.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Dispatcher\IKeyDispatcherTarget.cs" />
     <Compile Include="Dispatcher\KeyDispatcher.cs" />
     <Compile Include="Dispatcher\NativeMethods.cs" />
+    <Compile Include="Util\TreeHelper.cs" />
     <Compile Include="Util\ILogger.cs" />
     <Compile Include="Command\InputMode.cs" />
     <Compile Include="Core\IHierarchyControl.cs" />

@@ -1,4 +1,4 @@
-namespace VsNerdX.Core
+﻿namespace VsNerdX.Core
 {
     public interface IHierarchyControl
     {
@@ -11,5 +11,6 @@ namespace VsNerdX.Core
         void GoToLastChild();
         void CloseParentNode();
         void OpenOrCloseNode();
+        object GetSelectedItem();
     }
 }
