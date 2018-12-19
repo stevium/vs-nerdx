@@ -15,14 +15,22 @@ Currently supported Visual Studio version is 2017.
 * `X` - close all child nodes  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of current node recursively
 ##### Tree navigation mappings
-* `P` - go to root
-* `p` - go to parent
+* `P` - go to parent
 * `j` - go to next sibling
 * `J` - go to last child
 * `k` - go to prev sibling
 * `K` - go to first child
 * `gg` - go to top
 * `G` - go to bottom
+##### Node editing mappings
+* `dd` - delete 
+* `cc` - cut 
+* `yy` - copy 
+* `yp` - copy full path
+* `yw` - copy visible text
+* `p` - paste 
+* `r` - rename
+
 ##### Other mappings
 * `/` - Enter Find Mode - stops all processing of keys with the exception of Esc
 * `Esc` - Exit Find Mode - resumes handling of navigation keys

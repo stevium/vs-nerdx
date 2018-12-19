@@ -5,7 +5,7 @@
     {
         Normal,
         Find,
+        Yank,
         //Visual
-        //Command
     }
 }

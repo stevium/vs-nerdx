@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Windows.Controls;
+using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -11,6 +12,8 @@ namespace VsNerdX.Core
 {
     public class HierarchyControl : IHierarchyControl
     {
+        public DTE2 dte;
+        
         private const string SolutionPivotNavigator = "Microsoft.VisualStudio.PlatformUI.SolutionPivotNavigator";
         private const string SolutionPivotTreeView = "Microsoft.VisualStudio.PlatformUI.SolutionPivotTreeView";
         private const string WorkspaceTreeView = "Microsoft.VisualStudio.Workspace.VSIntegration.UI.WorkspaceTreeViewControl";
@@ -20,10 +23,11 @@ namespace VsNerdX.Core
 
         public IVsUIHierarchyWindow SolutionHierarchy { get; set; }
 
-        internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger)
+        internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger, DTE2 dte)
         {
             this.logger = logger;
             this.vsNerdXPackage = vsNerdXPackage;
+            this.dte = dte;
         }
 
         public void GoDown()
