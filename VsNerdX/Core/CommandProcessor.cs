@@ -31,7 +31,6 @@ namespace VsNerdX.Core
         {
             if (key == Keys.Return)
             {
-                // Note: This is temporary, should be handled as other commands if we want to implement support for '/' search for instance.
                 this.executionContext = this.executionContext.Clear();
                 return false;
             }
@@ -52,6 +51,10 @@ namespace VsNerdX.Core
                     var result = command.Execute(this.executionContext, key);
                     this.executionContext = result.ExecutionContext;
                     handledKey = result.State == CommandState.Handled;
+                } else if (this.executionContext.Mode == InputMode.Yank)
+                {
+                    handledKey = true;
+                    this.executionContext.Clear();
                 }
             }
 
@@ -70,22 +73,22 @@ namespace VsNerdX.Core
             commands.Add(new CommandKey(InputMode.Normal, Keys.J | Keys.Shift), new GoToLastChild(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.K), new GoUp(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.K | Keys.Shift), new GoToFirtsChild(this._hierarchyControl));
-            commands.Add(new CommandKey(InputMode.Normal, Keys.P), new GoToParent(this._hierarchyControl));
-            commands.Add(new CommandKey(InputMode.Normal, Keys.P | Keys.Shift), new GoToRoot(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.P | Keys.Shift), new GoToParent(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.G), new GoToTop(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.G | Keys.Shift), new GoToBottom(this._hierarchyControl));
 
-            commands.Add(new CommandKey(InputMode.Normal, Keys.Oem2 | Keys.Shift), new ToggleHelp(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.D), new Delete(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.C), new CutFile(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.P), new Paste(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.R), new Rename(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.Y), new EnterYankMode(CommandState.Handled));
+            commands.Add(new CommandKey(InputMode.Yank, Keys.Y), new CopyFile(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Yank, Keys.P), new CopyPath(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Yank, Keys.W), new CopyText(this._hierarchyControl));
+
             commands.Add(new CommandKey(InputMode.Normal, Keys.Divide), new EnterFindMode(CommandState.Handled));
-
-            // For now no need to enter Find mode when renaming. Intead use VS-s InRenameMode with ShouldDispatch
-            //commands.Add(new CommandKey(InputMode.Normal, Keys.F2), new EnterFindMode(CommandState.PassThrough));
-
-            // Note: Consider adding an option regarding the behavior of Escape in Normal mode
-            // e.g should it clear the stack and stay in Normal mode, or should it fall through to the default behavior? 
-            // Let's stick with the least disruptive mode for now.
-            //commands.Add(new ExecutableKey(InputMode.Normal, Keys.Escape), new ClearExecutionStack());
-
+            commands.Add(new CommandKey(InputMode.Normal, Keys.Escape), new ClearExecutionStack());
+            commands.Add(new CommandKey(InputMode.Normal, Keys.Oem2 | Keys.Shift), new ToggleHelp(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Find, Keys.Escape), new LeaveFindMode());
         }
 

@@ -61,7 +61,7 @@ namespace VsNerdX
             base.Initialize();
             var logger = new DebugLogger();
             var dte = GetService(typeof(DTE)) as DTE2;
-            var solutionExplorerControl = new HierarchyControl(this, logger);
+            var solutionExplorerControl = new HierarchyControl(this, logger, dte);
 
             this.commandProcessor = new CommandProcessor(solutionExplorerControl, logger);
 
@@ -69,7 +69,7 @@ namespace VsNerdX
                 new SolutionExplorerDispatchCondition(solutionExplorerControl, logger),
                 new KeyDispatcher(this.commandProcessor),
                 logger);
-
+            
             logger.Log("Initialized...");
         }
 

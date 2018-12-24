@@ -57,6 +57,14 @@
     <Compile Include="Command\Directory\CloseNodeRecursively.cs" />
     <Compile Include="Command\Directory\OpenNodeRecursively.cs" />
     <Compile Include="Command\General\ToggleHelp.cs" />
+    <Compile Include="Command\FileSystem\CopyFile.cs" />
+    <Compile Include="Command\FileSystem\CopyText.cs" />
+    <Compile Include="Command\FileSystem\CopyPath.cs" />
+    <Compile Include="Command\FileSystem\CutFile.cs" />
+    <Compile Include="Command\FileSystem\Delete.cs" />
+    <Compile Include="Command\FileSystem\Paste.cs" />
+    <Compile Include="Command\FileSystem\Rename.cs" />
+    <Compile Include="Command\General\EnterYankMode.cs" />
     <Compile Include="Command\Navigation\GoToLastChild.cs" />
     <Compile Include="Command\Navigation\GoToFirstChild.cs" />
     <Compile Include="Command\Navigation\GoToParent.cs" />
@@ -77,6 +85,7 @@
     <Compile Include="Command\Directory\OpenOrCloseNode.cs" />
     <Compile Include="Command\Navigation\GoToRoot.cs" />
     <Compile Include="Command\Navigation\GoUp.cs" />
+    <Compile Include="Core\HelpViewControl.cs" />
     <Compile Include="Util\DebugLogger.cs" />
     <Compile Include="Dispatcher\ConditionalKeyDispatcher.cs" />
     <Compile Include="Dispatcher\IDispatchCondition.cs" />
