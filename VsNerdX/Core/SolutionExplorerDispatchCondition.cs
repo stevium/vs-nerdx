@@ -22,7 +22,7 @@ namespace VsNerdX.Core
                 var listBox = hierarchyControl.GetHierarchyListBox();
                 if (listBox == null) return false;
                 var isInRenameMode = (bool?) listBox.GetType().GetProperty("IsInRenameMode")?.GetValue(listBox) == true;
-                return listBox.IsKeyboardFocusWithin && !isInRenameMode;
+                return listBox.IsKeyboardFocusWithin && !isInRenameMode || hierarchyControl.ContentGrid.IsKeyboardFocusWithin;
             }
         }
     }
