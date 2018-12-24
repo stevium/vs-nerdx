@@ -1,4 +1,4 @@
-# VsNerdX (2.0.0)
+# VsNerdX (2.1.0)
 [NERDTree](https://github.com/scrooloose/nerdtree) inspired Solution Explorer for Visual Studio. It integrates Vim-like bindings for tree navigation and manipulation into Visual Studio's hierarchy windows.
 
 # Installation
@@ -34,6 +34,7 @@ Currently supported Visual Studio version is 2017.
 ##### Other mappings
 * `/` - Enter Find Mode - stops all processing of keys with the exception of Esc
 * `Esc` - Exit Find Mode - resumes handling of navigation keys
+* `?` - Toggle Help
 
 # Reporting Problems
 Please use the [issue tracker](https://github.com/mstevius/vs-nerdx/issues).
