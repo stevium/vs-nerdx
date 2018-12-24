@@ -200,8 +200,9 @@ namespace VsNerdX.Core
 
         public void ToggleHelp()
         {
-            GetHierarchyListBox();
+            var listBox = GetHierarchyListBox();
             helpViewControl.ToggleHelp();
+            listBox.Focus();
         }
     }
 }
