@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Command\Directory\CloseNodeRecursively.cs" />
     <Compile Include="Command\Directory\OpenNodeRecursively.cs" />
+    <Compile Include="Command\General\ToggleHelp.cs" />
     <Compile Include="Command\FileSystem\CopyFile.cs" />
     <Compile Include="Command\FileSystem\CopyText.cs" />
     <Compile Include="Command\FileSystem\CopyPath.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Command\Directory\OpenOrCloseNode.cs" />
     <Compile Include="Command\Navigation\GoToRoot.cs" />
     <Compile Include="Command\Navigation\GoUp.cs" />
+    <Compile Include="Core\HelpViewControl.cs" />
     <Compile Include="Util\DebugLogger.cs" />
     <Compile Include="Dispatcher\ConditionalKeyDispatcher.cs" />
     <Compile Include="Dispatcher\IDispatchCondition.cs" />

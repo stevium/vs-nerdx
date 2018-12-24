@@ -13,6 +13,8 @@ namespace VsNerdX.Core
     public class HierarchyControl : IHierarchyControl
     {
         public DTE2 dte;
+        public IVsUIHierarchyWindow SolutionHierarchy;
+        public Panel ContentGrid;
         
         private const string SolutionPivotNavigator = "Microsoft.VisualStudio.PlatformUI.SolutionPivotNavigator";
         private const string SolutionPivotTreeView = "Microsoft.VisualStudio.PlatformUI.SolutionPivotTreeView";
@@ -21,13 +23,17 @@ namespace VsNerdX.Core
         private readonly ILogger logger;
         private readonly VsNerdXPackage vsNerdXPackage;
 
-        public IVsUIHierarchyWindow SolutionHierarchy { get; set; }
+        private readonly HelpViewControl helpViewControl;
+        private ContentPresenter ContentPresenter;
+        private ToolWindowPane SolutionPane;
+
 
         internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger, DTE2 dte)
         {
             this.logger = logger;
             this.vsNerdXPackage = vsNerdXPackage;
             this.dte = dte;
+            this.helpViewControl = new HelpViewControl(this);
         }
 
         public void GoDown()
@@ -157,36 +163,45 @@ namespace VsNerdX.Core
         {
             SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(vsNerdXPackage, VSConstants.StandardToolWindows.SolutionExplorer);
 
-            if (!(SolutionHierarchy is WindowPane solutionPane))
+            SolutionPane = SolutionHierarchy as ToolWindowPane;
+            if (SolutionPane == null)
+            {
+                return null;
+            }
+                
+            ContentGrid = SolutionPane.Content as Panel;
+            if (ContentGrid == null || ContentGrid.Children.Count == 0)
             {
                 return null;
             }
 
-            if (!(solutionPane.Content is Panel paneContent) || paneContent.Children.Count == 0)
-            {
-                return null;
-            }
-
-            if (!(paneContent.Children[0] is ContentPresenter contentPresenter))
+            ContentPresenter = ContentGrid.Children[0] as ContentPresenter;
+            if (ContentPresenter == null)
             {
                 return null;
             }
 
             ListBox listBox = null;
 
-            switch (contentPresenter.Content.GetType().FullName)
+            switch (ContentPresenter.Content.GetType().FullName)
             {
                 case SolutionPivotNavigator:
-                    listBox = contentPresenter.Content.GetType().GetProperties()
+                    listBox = ContentPresenter.Content.GetType().GetProperties()
                         .Single(p => p.Name == "TreeView" && p.PropertyType.FullName == SolutionPivotTreeView)
-                        .GetValue(contentPresenter.Content) as ListBox;
+                        .GetValue(ContentPresenter.Content) as ListBox;
                     break;
                 case WorkspaceTreeView:
-                    listBox = contentPresenter.Content as ListBox;
+                    listBox = ContentPresenter.Content as ListBox;
                     break;
             }
 
             return listBox;
+        }
+
+        public void ToggleHelp()
+        {
+            GetHierarchyListBox();
+            helpViewControl.ToggleHelp();
         }
     }
 }
