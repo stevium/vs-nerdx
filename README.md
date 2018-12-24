@@ -36,5 +36,6 @@ Currently supported Visual Studio version is 2017.
 * `Esc` - Exit Find Mode - resumes handling of navigation keys
 * `?` - Toggle Help
 
-# Reporting Problems
-Please use the [issue tracker](https://github.com/mstevius/vs-nerdx/issues).
+# Providing Feedback
+* File a bug or request a new feature in [issue tracker](https://github.com/mstevius/vs-nerdx/issues).
+* [Tweet](https://twitter.com/stevium) me  with any other feedback.
