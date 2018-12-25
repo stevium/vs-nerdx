@@ -56,6 +56,11 @@
   <ItemGroup>
     <Compile Include="Command\Directory\CloseNodeRecursively.cs" />
     <Compile Include="Command\Directory\OpenNodeRecursively.cs" />
+    <Compile Include="Command\File\ShowAllFiles.cs" />
+    <Compile Include="Command\File\OpenVSplit.cs" />
+    <Compile Include="Command\File\OpenSplit.cs" />
+    <Compile Include="Command\File\PreviewFile.cs" />
+    <Compile Include="Command\General\EnterGoMode.cs" />
     <Compile Include="Command\General\ToggleHelp.cs" />
     <Compile Include="Command\FileSystem\CopyFile.cs" />
     <Compile Include="Command\FileSystem\CopyText.cs" />

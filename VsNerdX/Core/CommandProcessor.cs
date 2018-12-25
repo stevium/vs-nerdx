@@ -51,7 +51,7 @@ namespace VsNerdX.Core
                     var result = command.Execute(this.executionContext, key);
                     this.executionContext = result.ExecutionContext;
                     handledKey = result.State == CommandState.Handled;
-                } else if (this.executionContext.Mode == InputMode.Yank)
+                } else if (this.executionContext.Mode == InputMode.Yank || this.executionContext.Mode == InputMode.Go)
                 {
                     handledKey = true;
                     this.executionContext.Clear();
@@ -74,8 +74,14 @@ namespace VsNerdX.Core
             commands.Add(new CommandKey(InputMode.Normal, Keys.K), new GoUp(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.K | Keys.Shift), new GoToFirtsChild(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.P | Keys.Shift), new GoToParent(this._hierarchyControl));
-            commands.Add(new CommandKey(InputMode.Normal, Keys.G), new GoToTop(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.G | Keys.Shift), new GoToBottom(this._hierarchyControl));
+
+            commands.Add(new CommandKey(InputMode.Normal, Keys.G), new EnterGoMode(CommandState.Handled));
+            commands.Add(new CommandKey(InputMode.Go, Keys.G), new GoToTop(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Go, Keys.O), new PreviewFile(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.I), new OpenSplit(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.S), new OpenVSplit(this._hierarchyControl));
+            commands.Add(new CommandKey(InputMode.Normal, Keys.I | Keys.Shift), new ShowAllFiles(this._hierarchyControl));
 
             commands.Add(new CommandKey(InputMode.Normal, Keys.D), new Delete(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.C), new CutFile(this._hierarchyControl));
@@ -85,7 +91,7 @@ namespace VsNerdX.Core
             commands.Add(new CommandKey(InputMode.Yank, Keys.Y), new CopyFile(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Yank, Keys.P), new CopyPath(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Yank, Keys.W), new CopyText(this._hierarchyControl));
-
+            
             commands.Add(new CommandKey(InputMode.Normal, Keys.Divide), new EnterFindMode(CommandState.Handled));
             commands.Add(new CommandKey(InputMode.Normal, Keys.Escape), new ClearExecutionStack());
             commands.Add(new CommandKey(InputMode.Normal, Keys.Oem2 | Keys.Shift), new ToggleHelp(this._hierarchyControl));

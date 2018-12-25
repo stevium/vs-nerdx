@@ -45,7 +45,7 @@ namespace VsNerdX.Core
             if (index < listBox.Items.Count)
             {
                 listBox.SelectedItem = listBox.Items.GetItemAt(index);
-                EnsureSelection(listBox);
+                EnsureSelection();
             }
 
         }
@@ -64,7 +64,7 @@ namespace VsNerdX.Core
             if (childNodes  == null) return;
 
             var first = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().First();
-            EnsureSelection(listBox);
+            EnsureSelection();
         }
 
         public void GoToLastChild()
@@ -81,7 +81,7 @@ namespace VsNerdX.Core
             if (childNodes  == null) return;
 
             var last = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().Last();
-            EnsureSelection(listBox);
+            EnsureSelection();
         }
 
         public void GoToParent()
@@ -95,7 +95,7 @@ namespace VsNerdX.Core
             if (parent == null) return;
 
             listBox.SelectedItem = parent;
-            EnsureSelection(listBox);
+            EnsureSelection();
         }
 
         public void CloseParentNode()
@@ -132,7 +132,7 @@ namespace VsNerdX.Core
             if (index >= 0)
             {
                 listBox.SelectedItem = listBox.Items.GetItemAt(index);
-                EnsureSelection(listBox);
+                EnsureSelection();
             }
         }
 
@@ -141,7 +141,7 @@ namespace VsNerdX.Core
             var listBox = GetHierarchyListBox();
             if (listBox == null) return;
             listBox.SelectedItem = listBox.Items.GetItemAt(0);
-            EnsureSelection(listBox);
+            EnsureSelection();
         }
 
         public void GoToBottom()
@@ -149,11 +149,12 @@ namespace VsNerdX.Core
             var listBox = GetHierarchyListBox();
             if (listBox == null) return;
             listBox.SelectedItem = listBox.Items.GetItemAt(listBox.Items.Count - 1);
-            EnsureSelection(listBox);
+            EnsureSelection();
         }
 
-        public void EnsureSelection(object listBox)
+        public void EnsureSelection()
         {
+            var listBox = GetHierarchyListBox();
             if (listBox == null) return;
             listBox.GetType().GetMethod("FocusSelectedItem")
                 ?.Invoke(listBox, new Object[] { });

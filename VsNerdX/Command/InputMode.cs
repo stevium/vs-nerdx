@@ -7,5 +7,6 @@
         Find,
         Yank,
         //Visual
+        Go
     }
 }

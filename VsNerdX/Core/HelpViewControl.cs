@@ -62,7 +62,7 @@ namespace VsNerdX.Core
             textBlock.FontFamily = new FontFamily("Consolas");
 
             textBlock.Inlines.AddRange(new Inline [] {
-                new Bold(new Run("VsNerdX (2.1.0) Quick Help")), new LineBreak(),
+                new Bold(new Run("VsNerdX (2.2.0) Quick Help")), new LineBreak(),
                 new Bold(new Run("==========================")), new LineBreak(),
                 new Bold(new Run(" Directory node mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
@@ -71,6 +71,14 @@ namespace VsNerdX.Core
                 new Bold(new Run(" x")), new Run(": close parent of node"), new LineBreak(),
                 new Bold(new Run(" X")), new Run(": recursively close child nodes"), new LineBreak(), new LineBreak(),
 
+                new Bold(new Run(" File node mappings")), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
+                new Bold(new Run(" <Enter>")), new Run(": open file"), new LineBreak(),
+                new Bold(new Run(" go")), new Run(": preview file"), new LineBreak(),
+                new Bold(new Run(" i")), new Run(": open split"), new LineBreak(),
+                new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(),
+                
+                
                 new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
                 new Bold(new Run(" P")), new Run(": go to parent"), new LineBreak(),
@@ -91,6 +99,10 @@ namespace VsNerdX.Core
                 new Bold(new Run(" p")), new Run(": paste"), new LineBreak(),
                 new Bold(new Run(" r")), new Run(": rename"), new LineBreak(), new LineBreak(),
 
+                new Bold(new Run(" Tree filtering mappings")), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
+                new Bold(new Run(" I")), new Run(": Show all files"), new LineBreak(), new LineBreak(),
+                
                 new Bold(new Run(" Other mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(), 
                 new Bold(new Run(" /")), new Run(": Enter Find Mode"), new LineBreak(),
