@@ -101,13 +101,13 @@ namespace VsNerdX.Core
 
                 new Bold(new Run(" Tree filtering mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
-                new Bold(new Run(" I")), new Run(": Show all files"), new LineBreak(), new LineBreak(),
+                new Bold(new Run(" I")), new Run(": toggle show all files"), new LineBreak(), new LineBreak(),
                 
                 new Bold(new Run(" Other mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(), 
-                new Bold(new Run(" /")), new Run(": Enter Find Mode"), new LineBreak(),
-                new Bold(new Run(" Esc")), new Run(": Exit Find Mode"), new LineBreak(),
-                new Bold(new Run(" ?")), new Run(": Toggle Help")
+                new Bold(new Run(" /")), new Run(": enter find Mode"), new LineBreak(),
+                new Bold(new Run(" Esc")), new Run(": exit find Mode"), new LineBreak(),
+                new Bold(new Run(" ?")), new Run(": toggle help")
             });
 
             _scrollView.Content = textBlock;

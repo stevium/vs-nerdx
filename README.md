@@ -40,7 +40,7 @@ Currently supported Visual Studio version is 2017.
 * `r` - rename
 
 #### Tree filtering mappings
-* `dd` - show all files 
+* `I` - toggle show all files 
 
 #### Other mappings
 * `/` - enter find mode - stops all processing of keys with the exception of Esc
