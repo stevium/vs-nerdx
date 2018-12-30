@@ -2,7 +2,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using Microsoft.VisualStudio.Shell.Interop;
 using VsNerdX.Util;
 
 namespace VsNerdX.Core
@@ -28,10 +27,12 @@ namespace VsNerdX.Core
                 NavigatorFrame = (Grid) this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
                 NavigatorFrame.SizeChanged += HierarchyControl_SizeChanged;
                 HierarchyControl_SizeChanged(null, null);
+                this._scrollView.Focus();
             }
             else
             {
                 this.HideHelp();
+                this._hierarchyControl.GetHierarchyListBox().Focus();
                 var navigatiorFrame = (Grid) this._hierarchyControl.SolutionHierarchy.GetValue("Frame").GetValue("FrameView").GetValue("Content");
                 navigatiorFrame.SizeChanged -= HierarchyControl_SizeChanged;
             }
@@ -53,8 +54,10 @@ namespace VsNerdX.Core
 
         private void ShowHelp()
         {
-            this._scrollView = new ScrollViewer();
+            this._scrollView = new ScrollViewer(); 
             var textBlock = new TextBlock();
+            
+            this._scrollView.FocusVisualStyle = new Style(); 
 
             textBlock.TextWrapping = TextWrapping.Wrap;
             textBlock.Background = new SolidColorBrush(Color.FromRgb(201,203,215));
@@ -121,6 +124,26 @@ namespace VsNerdX.Core
             Grid.SetColumn(_helpStackPanel, 0);
             Grid.SetRow(_helpStackPanel, 0);
             _hierarchyControl.ContentGrid.Children.Add(_helpStackPanel);
+        }
+
+        public void LineDown()
+        {
+            _scrollView.LineDown();
+        }
+        
+        public void LineUp()
+        {
+            _scrollView.LineUp();
+        }
+
+        public void GoToBottom()
+        {
+            _scrollView.ScrollToBottom();
+        }
+
+        public void GoToTop()
+        {
+            _scrollView.ScrollToTop();
         }
     }
 }

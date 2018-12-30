@@ -15,6 +15,7 @@ namespace VsNerdX.Core
         public DTE2 dte;
         public IVsUIHierarchyWindow SolutionHierarchy;
         public Panel ContentGrid;
+        public readonly HelpViewControl helpViewControl;
         
         private const string SolutionPivotNavigator = "Microsoft.VisualStudio.PlatformUI.SolutionPivotNavigator";
         private const string SolutionPivotTreeView = "Microsoft.VisualStudio.PlatformUI.SolutionPivotTreeView";
@@ -23,7 +24,6 @@ namespace VsNerdX.Core
         private readonly ILogger logger;
         private readonly VsNerdXPackage vsNerdXPackage;
 
-        private readonly HelpViewControl helpViewControl;
         private ContentPresenter ContentPresenter;
         private ToolWindowPane SolutionPane;
 
@@ -201,9 +201,7 @@ namespace VsNerdX.Core
 
         public void ToggleHelp()
         {
-            var listBox = GetHierarchyListBox();
             helpViewControl.ToggleHelp();
-            listBox.Focus();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using VsNerdX.Core;
 
 namespace VsNerdX.Command.Navigation
@@ -14,7 +15,19 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            this._hierarchyControl.GoDown();
+            try
+            {
+                if (((HierarchyControl) this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+                {
+                    this._hierarchyControl.GoDown();
+                }
+                else
+                {
+                    ((HierarchyControl) this._hierarchyControl).helpViewControl.LineDown();
+                }
+            }
+            catch (Exception e) { }
+
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }
     }
