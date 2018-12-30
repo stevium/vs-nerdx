@@ -20,12 +20,17 @@ namespace VsNerdX.Command.Navigation
             var dte = (this._hierarchyControl as HierarchyControl).dte;
             try
             {
-                dte.ExecuteCommand("Project.ShowAllFiles");
+                var selectedItem = dte.SelectedItems.Item(1);
+                if (selectedItem.Project != null)
+                {
+                    dte.ExecuteCommand("Project.ShowAllFiles");
+                }
+                else
+                {
+                    dte.ExecuteCommand("SolutionExplorer.Folder.ShowAllFiles");
+                }
             }
-            catch (Exception e)
-            {
-                dte.ExecuteCommand("SolutionExplorer.Folder.ShowAllFiles");
-            }
+            catch (Exception e) { }
             executionContext = executionContext.Clear().With(mode: InputMode.Normal);
             return new ExecutionResult(executionContext, CommandState.Handled);
         }
