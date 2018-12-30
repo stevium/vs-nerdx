@@ -91,6 +91,7 @@
     <Compile Include="Command\Navigation\GoToRoot.cs" />
     <Compile Include="Command\Navigation\GoUp.cs" />
     <Compile Include="Core\HelpViewControl.cs" />
+    <Compile Include="Util\VsixManifest.cs" />
     <Compile Include="Util\DebugLogger.cs" />
     <Compile Include="Dispatcher\ConditionalKeyDispatcher.cs" />
     <Compile Include="Dispatcher\IDispatchCondition.cs" />

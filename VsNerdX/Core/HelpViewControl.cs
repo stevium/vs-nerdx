@@ -62,7 +62,7 @@ namespace VsNerdX.Core
             textBlock.FontFamily = new FontFamily("Consolas");
 
             textBlock.Inlines.AddRange(new Inline [] {
-                new Bold(new Run("VsNerdX (2.2.0) Quick Help")), new LineBreak(),
+                new Bold(new Run(" VsNerdX " + VsixManifest.GetManifest().Version + " Quick Help")), new LineBreak(),
                 new Bold(new Run("==========================")), new LineBreak(),
                 new Bold(new Run(" Directory node mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
