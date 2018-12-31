@@ -126,6 +126,11 @@ namespace VsNerdX.Core
             _hierarchyControl.ContentGrid.Children.Add(_helpStackPanel);
         }
 
+        public bool IsVisible()
+        {
+            return this._helpStackPanel != null;
+        }
+
         public void LineDown()
         {
             _scrollView.LineDown();
