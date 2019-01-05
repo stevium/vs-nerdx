@@ -54,7 +54,7 @@ namespace VsNerdX.Core
                 } else if (this.executionContext.Mode == InputMode.Yank || this.executionContext.Mode == InputMode.Go)
                 {
                     handledKey = true;
-                    this.executionContext.Clear();
+                    this.executionContext = this.executionContext.Clear();
                 }
             }
 
