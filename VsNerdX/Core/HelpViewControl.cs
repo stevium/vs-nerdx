@@ -79,7 +79,7 @@ namespace VsNerdX.Core
                 new Bold(new Run(" <Enter>")), new Run(": open file"), new LineBreak(),
                 new Bold(new Run(" go")), new Run(": preview file"), new LineBreak(),
                 new Bold(new Run(" i")), new Run(": open split"), new LineBreak(),
-                new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(),
+                new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(), new LineBreak(),
                 
                 
                 new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
