@@ -16,7 +16,7 @@ namespace VsNerdX.Dispatcher
         public bool Dispatch(int nCode, IntPtr wParam, IntPtr lParam)
         {
             var handled = false;
-            if (nCode == NativeMethods.HC_NOREMOVE && KeyDown(lParam))
+            if (nCode == NativeMethods.HC_ACTION && KeyDown(lParam))
             {
                 int vkCode = wParam.ToInt32();
 

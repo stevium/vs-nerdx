@@ -11,7 +11,7 @@
         internal const int VK_CONTROL = 0x11;
         internal const int VK_ALT = 0x12;
 
-        internal const int HC_NOREMOVE = 3;
+        internal const int HC_ACTION = 0;
         internal const int TRANSITION_STATE_BIT = (0x1 << 31);
         internal const int HIGHORDER_KEYSTATE_BIT = 0x8000;
 
