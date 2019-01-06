@@ -4,6 +4,7 @@
         <Identity Id="VsNerdX.01607222-cc39-448b-ba63-4290747bb823" Version="2.3.1" Language="en-US" Publisher="Miloš Stevanović" />
         <DisplayName>NerdX Solution Explorer</DisplayName>
         <Description xml:space="preserve">NERDTree inspired Solution Explorer for Visual Studio</Description>
+        <MoreInfo>https://github.com/stevium/vs-nerdx</MoreInfo>
         <License>Resources\LICENSE.txt</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Preview.png</PreviewImage>
