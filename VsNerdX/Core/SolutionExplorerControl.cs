@@ -25,8 +25,6 @@ namespace VsNerdX.Core
         private readonly VsNerdXPackage vsNerdXPackage;
 
         private ContentPresenter ContentPresenter;
-        private ToolWindowPane SolutionPane;
-
 
         internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger, DTE2 dte)
         {
@@ -163,14 +161,8 @@ namespace VsNerdX.Core
         public ListBox GetHierarchyListBox()
         {
             SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(vsNerdXPackage, VSConstants.StandardToolWindows.SolutionExplorer);
-
-            SolutionPane = SolutionHierarchy as ToolWindowPane;
-            if (SolutionPane == null)
-            {
-                return null;
-            }
                 
-            ContentGrid = SolutionPane.Content as Panel;
+            ContentGrid = SolutionHierarchy.GetValue("Content") as Panel;
             if (ContentGrid == null || ContentGrid.Children.Count == 0)
             {
                 return null;
