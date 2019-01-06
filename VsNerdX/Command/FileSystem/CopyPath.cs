@@ -43,10 +43,9 @@ namespace VsNerdX.Command.Navigation
                 {
                     path = dte.Solution.FullName;
                 }
-                else 
+                else
                 {
-                    var canonicalName = TreeHelper.GetCanonicalName(selectedTreeNode);
-                    path = canonicalName ?? TreeHelper.GetText(selectedTreeNode);
+                    path = TreeHelper.GetText(selectedTreeNode);
                 }
             }
 
