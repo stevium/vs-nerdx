@@ -1,4 +1,4 @@
-# VsNerdX (2.3.0)
+# VsNerdX (2.3.1)
 [NERDTree](https://github.com/scrooloose/nerdtree) inspired Solution Explorer for Visual Studio. It integrates VIM bindings for tree navigation and manipulation into Visual Studio's hierarchy windows.
 
 # Install
@@ -6,7 +6,7 @@ Follow the instructions on **[Visual Studio Marketplace](https://marketplace.vis
 
 If building from source, use the resulting `VsNerdX.vsix`.
 
-Currently supported Visual Studio version is 2017.
+Currently supported Visual Studio versions are 2017 and 2019.
 
 # Usage
 #### Directory node mappings

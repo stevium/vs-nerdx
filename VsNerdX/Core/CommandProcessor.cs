@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using VsNerdX.Command;
 using VsNerdX.Command.Directory;
@@ -48,9 +49,15 @@ namespace VsNerdX.Core
                 var commandKey = new CommandKey(this.executionContext.Mode, key);
                 if (this.commands.TryGetValue(commandKey, out ICommand command))
                 {
-                    var result = command.Execute(this.executionContext, key);
-                    this.executionContext = result.ExecutionContext;
-                    handledKey = result.State == CommandState.Handled;
+                    try
+                    {
+                        var result = command.Execute(this.executionContext, key);
+                        this.executionContext = result.ExecutionContext;
+                        handledKey = result.State == CommandState.Handled;
+                    } catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 } else if (this.executionContext.Mode == InputMode.Yank || this.executionContext.Mode == InputMode.Go)
                 {
                     handledKey = true;

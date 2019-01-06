@@ -104,7 +104,13 @@ namespace VsNerdX.Util
                 .GetValue("SourceItem")
                 .GetValue("CanonicalName");
         }
-
+        public static string GetText(Object item)
+        {
+            return (string)item
+                .GetValue("Item")
+                .GetValue("SourceItem")
+                .GetValue("Text");
+        }
         public static bool IsExpandable(Object item)
         {
             return (bool?) item.GetValue("IsExpandable") ?? false;

@@ -14,37 +14,41 @@ namespace VsNerdX.Command.Navigation
         public CopyPath(IHierarchyControl hierarchyControl)
         {
             this._hierarchyControl = hierarchyControl;
-            this.dte = ((HierarchyControl) _hierarchyControl).dte;
+            this.dte = ((HierarchyControl)_hierarchyControl).dte;
         }
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            string path = "";
-            try
+            string path;
+            var selectedTreeNode = _hierarchyControl.GetSelectedItem();
+            var wsVisualNode = selectedTreeNode.GetValue("Item").GetValue("WorkspaceVisualNode");
+
+            if (wsVisualNode != null)
+            {
+                path = (string)wsVisualNode.GetValue("FullPath");
+            }
+            else
             {
                 var selectedItem = dte.SelectedItems.Item(1);
-                if (selectedItem.Project != null)
+                var selectedProject = selectedItem.Project;
+                if (selectedProject != null)
                 {
-                    path = selectedItem.Project.FullName;
+                    path = selectedProject.FullName != "" ? selectedProject.FullName : selectedProject.Name;
                 }
                 else if (selectedItem.ProjectItem != null)
                 {
                     path = selectedItem.ProjectItem.FileNames[1];
                 }
-                else if (selectedItem.Name == (string) dte.Solution.Properties.Item("Name").Value)
+                else if (selectedItem.Name == (string)dte.Solution.Properties.Item("Name").Value)
                 {
                     path = dte.Solution.FullName;
                 }
-                else
+                else 
                 {
-                    path = TreeHelper.GetCanonicalName(_hierarchyControl.GetSelectedItem());
+                    var canonicalName = TreeHelper.GetCanonicalName(selectedTreeNode);
+                    path = canonicalName ?? TreeHelper.GetText(selectedTreeNode);
                 }
             }
-            catch (NotImplementedException e)
-            {
-                path = (string) _hierarchyControl.GetSelectedItem().GetValue("Item").GetValue("WorkspaceVisualNode").GetValue("FullPath");
-            }
-            catch (Exception e) { }
 
             if (path != null)
             {
