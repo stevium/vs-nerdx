@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Windows.Controls;
+using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
@@ -16,7 +17,7 @@ namespace VsNerdX.Core
         public IVsUIHierarchyWindow SolutionHierarchy;
         public Panel ContentGrid;
         public readonly HelpViewControl helpViewControl;
-        
+
         private const string SolutionPivotNavigator = "Microsoft.VisualStudio.PlatformUI.SolutionPivotNavigator";
         private const string SolutionPivotTreeView = "Microsoft.VisualStudio.PlatformUI.SolutionPivotTreeView";
         private const string WorkspaceTreeView = "Microsoft.VisualStudio.Workspace.VSIntegration.UI.WorkspaceTreeViewControl";
@@ -59,9 +60,9 @@ namespace VsNerdX.Core
             if (parent == null) return;
 
             var childNodes = parent.GetType().GetProperty("ChildNodes").GetValue(parent);
-            if (childNodes  == null) return;
+            if (childNodes == null) return;
 
-            var first = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().First();
+            var first = listBox.SelectedItem = ((IEnumerable)childNodes).Cast<Object>().ToList().First();
             EnsureSelection();
         }
 
@@ -76,9 +77,9 @@ namespace VsNerdX.Core
             if (parent == null) return;
 
             var childNodes = parent.GetType().GetProperty("ChildNodes").GetValue(parent);
-            if (childNodes  == null) return;
+            if (childNodes == null) return;
 
-            var last = listBox.SelectedItem = ((IEnumerable) childNodes).Cast<Object>().ToList().Last();
+            var last = listBox.SelectedItem = ((IEnumerable)childNodes).Cast<Object>().ToList().Last();
             EnsureSelection();
         }
 
@@ -160,8 +161,8 @@ namespace VsNerdX.Core
 
         public ListBox GetHierarchyListBox()
         {
-            SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(vsNerdXPackage, VSConstants.StandardToolWindows.SolutionExplorer);
-                
+            SolutionHierarchy = VsShellUtilities.GetUIHierarchyWindow(ServiceLocator.GetInstance<IServiceProvider>(), VSConstants.StandardToolWindows.SolutionExplorer);
+
             ContentGrid = SolutionHierarchy.GetValue("Content") as Panel;
             if (ContentGrid == null || ContentGrid.Children.Count == 0)
             {
