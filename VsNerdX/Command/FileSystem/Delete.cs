@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -16,13 +17,12 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             var state = CommandState.Handled;
             if (executionContext.Stack.Count > 0 && executionContext.Stack.Last() == Keys.D && key == Keys.D)
             {
                 try
                 {
-                    dte.ExecuteCommand("Edit.Delete");
+                    Dte.ExecuteCommand("Edit.Delete");
                 }
                 catch (Exception e) { }
 

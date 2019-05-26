@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.CommandBars;
 using System;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -17,11 +18,10 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             try
             {
-                dte.ExecuteCommand("View.Open");
-                dte.ExecuteCommand("Window.NewVerticalTabGroup");
+                Dte.ExecuteCommand("View.Open");
+                Dte.ExecuteCommand("Window.NewVerticalTabGroup");
             }
             catch (Exception e) { }
             executionContext = executionContext.Clear().With(mode: InputMode.Normal);

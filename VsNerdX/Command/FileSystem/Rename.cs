@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -15,10 +16,9 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             try
             {
-                dte.ExecuteCommand("File.Rename");
+                Dte.ExecuteCommand("File.Rename");
             }
             catch (Exception e) { }
 

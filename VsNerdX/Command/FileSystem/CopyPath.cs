@@ -1,20 +1,17 @@
-using System;
 using System.Windows.Forms;
-using EnvDTE80;
 using VsNerdX.Core;
 using VsNerdX.Util;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
     public class CopyPath : ICommand
     {
         private readonly IHierarchyControl _hierarchyControl;
-        private DTE2 dte;
 
         public CopyPath(IHierarchyControl hierarchyControl)
         {
             this._hierarchyControl = hierarchyControl;
-            this.dte = ((HierarchyControl)_hierarchyControl).dte;
         }
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
@@ -29,7 +26,7 @@ namespace VsNerdX.Command.Navigation
             }
             else
             {
-                var selectedItem = dte.SelectedItems.Item(1);
+                var selectedItem = Dte.SelectedItems.Item(1);
                 var selectedProject = selectedItem.Project;
                 if (selectedProject != null)
                 {
@@ -39,9 +36,9 @@ namespace VsNerdX.Command.Navigation
                 {
                     path = selectedItem.ProjectItem.FileNames[1];
                 }
-                else if (selectedItem.Name == (string)dte.Solution.Properties.Item("Name").Value)
+                else if (selectedItem.Name == (string)Dte.Solution.Properties.Item("Name").Value)
                 {
-                    path = dte.Solution.FullName;
+                    path = Dte.Solution.FullName;
                 }
                 else
                 {

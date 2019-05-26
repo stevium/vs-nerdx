@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Linq;
 using System.Windows.Controls;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -13,7 +11,6 @@ namespace VsNerdX.Core
 {
     public class HierarchyControl : IHierarchyControl
     {
-        public DTE2 dte;
         public IVsUIHierarchyWindow SolutionHierarchy;
         public Panel ContentGrid;
         public readonly HelpViewControl helpViewControl;
@@ -27,11 +24,10 @@ namespace VsNerdX.Core
 
         private ContentPresenter ContentPresenter;
 
-        internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger, DTE2 dte)
+        internal HierarchyControl(VsNerdXPackage vsNerdXPackage, ILogger logger)
         {
             this.logger = logger;
             this.vsNerdXPackage = vsNerdXPackage;
-            this.dte = dte;
             this.helpViewControl = new HelpViewControl(this);
         }
 

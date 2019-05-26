@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using EnvDTE80;
 using VsNerdX.Core;
 using VsNerdX.Util;
 
@@ -9,12 +8,10 @@ namespace VsNerdX.Command.Navigation
     public class CopyText : ICommand
     {
         private readonly IHierarchyControl _hierarchyControl;
-        private DTE2 dte;
 
         public CopyText(IHierarchyControl hierarchyControl)
         {
-            this._hierarchyControl = hierarchyControl;
-            this.dte = ((HierarchyControl) _hierarchyControl).dte;
+            _hierarchyControl = hierarchyControl;
         }
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)

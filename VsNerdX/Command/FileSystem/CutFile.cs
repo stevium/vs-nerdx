@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -11,18 +12,17 @@ namespace VsNerdX.Command.Navigation
 
         public CutFile(IHierarchyControl hierarchyControl)
         {
-            this._hierarchyControl = hierarchyControl;
+            _hierarchyControl = hierarchyControl;
         }
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             var state = CommandState.Handled;
             if (executionContext.Stack.Count > 0 && executionContext.Stack.Last() == Keys.C && key == Keys.C)
             {
                 try
                 {
-                    dte.ExecuteCommand("Edit.Cut");
+                    Dte.ExecuteCommand("Edit.Cut");
                 }
                 catch (Exception e) { }
 

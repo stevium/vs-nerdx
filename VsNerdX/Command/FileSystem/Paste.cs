@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -16,10 +17,9 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             try
             {
-                dte.ExecuteCommand("Edit.Paste");
+                Dte.ExecuteCommand("Edit.Paste");
             } catch (Exception e) { }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);

@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.CommandBars;
 using System;
 using System.Windows.Forms;
 using VsNerdX.Core;
+using static VsNerdX.VsNerdXPackage;
 
 namespace VsNerdX.Command.Navigation
 {
@@ -17,17 +18,16 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            var dte = (this._hierarchyControl as HierarchyControl).dte;
             try
             {
-                var selectedItem = dte.SelectedItems.Item(1);
+                var selectedItem = Dte.SelectedItems.Item(1);
                 if (selectedItem.Project != null)
                 {
-                    dte.ExecuteCommand("Project.ShowAllFiles");
+                    Dte.ExecuteCommand("Project.ShowAllFiles");
                 }
                 else
                 {
-                    dte.ExecuteCommand("SolutionExplorer.Folder.ShowAllFiles");
+                    Dte.ExecuteCommand("SolutionExplorer.Folder.ShowAllFiles");
                 }
             }
             catch (Exception e) { }
