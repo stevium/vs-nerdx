@@ -64,7 +64,12 @@ namespace VsNerdX.Util
 
         private static TService GetDTEService<TService>() where TService : class
         {
+            #if Vs19
             var dte = GetGlobalService<SDTE, DTE>();
+            #endif
+            #if Vs22
+            var dte = GetGlobalService<SDTE, _DTE>();
+            #endif
             return (TService)QueryService(dte, typeof(TService));
         }
 
@@ -76,7 +81,12 @@ namespace VsNerdX.Util
 
         private static IServiceProvider GetServiceProvider()
         {
+            #if Vs19
             var dte = GetGlobalService<SDTE, DTE>();
+            #endif
+            #if Vs22
+            var dte = GetGlobalService<SDTE, _DTE>();
+            #endif
             return GetServiceProvider(dte);
         }
 

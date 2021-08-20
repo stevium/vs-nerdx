@@ -1,25 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VsNerdX.01607222-cc39-448b-ba63-4290747bb823" Version="2.4.0" Language="en-US" Publisher="Miloš Stevanović" />
-        <DisplayName>NerdX Solution Explorer</DisplayName>
+        <Identity Id="VSNerdX_22.c6cc12bc-d3f4-4cda-a934-8212ea728ff8" Version="2.4.0" Language="en-US" Publisher="James Smith" />
+        <DisplayName>VSNerdX-2022-Preview</DisplayName>
         <Description xml:space="preserve">NERDTree inspired Solution Explorer for Visual Studio</Description>
-        <MoreInfo>https://github.com/stevium/vs-nerdx</MoreInfo>
         <License>LICENSE.txt</License>
         <Icon>Icon.png</Icon>
         <PreviewImage>Preview.png</PreviewImage>
         <Tags>Vim, NERD-Tree,  Solution Explorer, Navigation, Tree</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,17.0)" />
-        <InstallationTarget Version="[14.0,17.0)" Id="Microsoft.VisualStudio.Pro" />
-        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
     </Dependencies>
     <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,17.0)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />

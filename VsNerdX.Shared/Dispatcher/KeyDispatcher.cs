@@ -15,31 +15,38 @@ namespace VsNerdX.Dispatcher
 
         public bool Dispatch(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            var handled = false;
-            if (nCode == NativeMethods.HC_ACTION && KeyDown(lParam))
+            try
             {
-                int vkCode = wParam.ToInt32();
+                var handled = false;
+                if (nCode == NativeMethods.HC_ACTION && KeyDown(lParam))
+                {
+                    double vkCode = wParam.ToInt64();
 
-                var key = (Keys)vkCode;
-                if (IsModifier(key))
-                {
-                    // Let modifiers pass through
-                    handled = false;
+                    var key = (Keys)vkCode;
+                    if (IsModifier(key))
+                    {
+                        // Let modifiers pass through
+                        handled = false;
+                    }
+                    else
+                    {
+                        key = AddModifierState(key);
+                        Debug.Print($"Dispatching Key = {key}");
+                        handled = this.target.OnKey(key);
+                    }
                 }
-                else
-                {
-                    key = AddModifierState(key);
-                    Debug.Print($"Dispatching Key = {key}");
-                    handled = this.target.OnKey(key);
-                }
+
+                return handled;
             }
-
-            return handled;
+            catch
+            {
+                throw;
+            }
         }
 
         private static bool KeyDown(IntPtr lParam)
         {
-            var bits = lParam.ToInt32();
+            var bits = lParam.ToInt64();
             return ((bits & NativeMethods.TRANSITION_STATE_BIT) == 0);
         }
 

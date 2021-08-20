@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+#if Vs19
 using IAsyncServiceProvider = Microsoft.VisualStudio.Shell.Interop.IAsyncServiceProvider;
+#endif
 
 namespace VsNerdX.Util
 {
@@ -22,8 +24,7 @@ namespace VsNerdX.Util
             await ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
             {
                 object serviceInstance = null;
-                Guid serviceTypeGuid = serviceType.GUID;
-                serviceInstance = await asyncServiceProvider.QueryServiceAsync(ref serviceTypeGuid);
+                serviceInstance = await asyncServiceProvider.GetServiceAsync<T>(serviceType);
 
                 // We have to make sure we are on main UI thread before trying to cast as underlying implementation
                 // can be an STA COM object and doing a cast would require calling QueryInterface/AddRef marshaling 
