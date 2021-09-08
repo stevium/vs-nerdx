@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsNerdX", "VsNerdX\VsNerdX.csproj", "{87220108-FBBE-49C7-B7FD-6F22454D084C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{503F10C8-C9AA-4712-8989-8695E385418B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -15,6 +13,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "VsNerdX.Shared", "VsNerdX.Shared\VsNerdX.Shared.shproj", "{0372F1EB-E64B-49AB-BDD9-AD30C0348960}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSNerdX-22", "VSNerdX-22\VSNerdX-22.csproj", "{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsNerdX-19", "VsNerdX-19\VsNerdX-19.csproj", "{87220108-FBBE-49C7-B7FD-6F22454D084C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -29,14 +29,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|x86.Build.0 = Debug|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|x86.ActiveCfg = Release|Any CPU
-		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|x86.Build.0 = Release|Any CPU
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Debug|x86.ActiveCfg = Debug|x86
@@ -45,6 +37,14 @@ Global
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Release|x86.ActiveCfg = Release|x86
 		{89A1CE91-6D9E-4FBD-8366-366C7FA0AA2B}.Release|x86.Build.0 = Release|x86
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|x86.ActiveCfg = Debug|x86
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Debug|x86.Build.0 = Debug|x86
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|x86.ActiveCfg = Release|x86
+		{87220108-FBBE-49C7-B7FD-6F22454D084C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

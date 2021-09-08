@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="VsNerdX.01607222-cc39-448b-ba63-4290747bb823" Version="2.4.0" Language="en-US" Publisher="Miloš Stevanović" />
-        <DisplayName>NerdX Solution Explorer</DisplayName>
+        <DisplayName>VsNerdX for 2015-2019</DisplayName>
         <Description xml:space="preserve">NERDTree inspired Solution Explorer for Visual Studio</Description>
         <MoreInfo>https://github.com/stevium/vs-nerdx</MoreInfo>
         <License>LICENSE.txt</License>

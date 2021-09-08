@@ -6,7 +6,7 @@ Follow the instructions on **[Visual Studio Marketplace](https://marketplace.vis
 
 If building from source, use the resulting `VsNerdX.vsix`.
 
-Currently supported Visual Studio versions are 2017, 2019 and 2022-Preview3. 
+Currently supported Visual Studio versions are 2017, 2019, and 2022. 
 
 # Usage
 #### Directory node mappings
