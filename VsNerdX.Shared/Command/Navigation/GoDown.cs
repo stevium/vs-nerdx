@@ -15,14 +15,21 @@ namespace VsNerdX.Command.Navigation
 
         public ExecutionResult Execute(IExecutionContext executionContext, Keys key)
         {
-            if (((HierarchyControl)this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+            try
             {
-                this._hierarchyControl.GoDown();
+                if (((HierarchyControl) this._hierarchyControl).GetHierarchyListBox().IsKeyboardFocusWithin)
+                {
+                    this._hierarchyControl.GoDown();
+                }
+                else
+                {
+                    ((HierarchyControl) this._hierarchyControl).helpViewControl.LineDown();
+                }
             }
-            else
+            catch (Exception e)
             {
-                ((HierarchyControl)this._hierarchyControl).helpViewControl.LineDown();
             }
+
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }
     }
