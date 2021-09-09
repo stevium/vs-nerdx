@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VsNerdX.01607222-cc39-448b-ba63-4290747bb823" Version="2.3.4" Language="en-US" Publisher="Miloš Stevanović" />
-        <DisplayName>NerdX Solution Explorer</DisplayName>
+        <Identity Id="VSNerdX_19.c6cc12bc-d3f4-4cda-a934-8212ea728ff8" Version="2.4.0" Language="en-US" Publisher="Miloš Stevanović" />
+        <DisplayName>VsNerdX 2015-2019</DisplayName>
         <Description xml:space="preserve">NERDTree inspired Solution Explorer for Visual Studio</Description>
         <MoreInfo>https://github.com/stevium/vs-nerdx</MoreInfo>
-        <License>Resources\LICENSE.txt</License>
-        <Icon>Resources\Icon.png</Icon>
-        <PreviewImage>Resources\Preview.png</PreviewImage>
+        <License>LICENSE.txt</License>
+        <Icon>Icon.png</Icon>
+        <PreviewImage>Preview.png</PreviewImage>
         <Tags>Vim, NERD-Tree,  Solution Explorer, Navigation, Tree</Tags>
     </Metadata>
     <Installation>

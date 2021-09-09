@@ -26,7 +26,9 @@ namespace VsNerdX.Command.Navigation
                     ((HierarchyControl) this._hierarchyControl).helpViewControl.LineDown();
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+            }
 
             return new ExecutionResult(executionContext.Clear(), CommandState.Handled);
         }

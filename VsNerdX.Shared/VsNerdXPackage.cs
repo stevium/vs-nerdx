@@ -1,20 +1,25 @@
 ﻿using EnvDTE;
 using EnvDTE80;
-using Microsoft.VisualStudio.Shell;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using VsNerdX.Core;
 using VsNerdX.Dispatcher;
-using VsNerdX.Util;
-using PackageAutoLoadFlags = VsNerdX.Util.PackageAutoLoadFlags;
+using System.Threading;
+using System;
+using DebugLogger = VsNerdX.Util.DebugLogger;
+using Microsoft.VisualStudio.OLE.Interop;
+#if Vs19
+using IAsyncServiceProvider = Microsoft.VisualStudio.Shell.Interop.IAsyncServiceProvider;
+#endif
 
 namespace VsNerdX
 {
-    [AsyncPackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
-    [Util.ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly",
         Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
@@ -26,19 +31,14 @@ namespace VsNerdX
 
         private CommandProcessor _commandProcessor;
         private ConditionalKeyDispatcher _keyDispatcher;
-        private bool _isAsyncLoadSupported;
         private DebugLogger _logger;
 
-        public IVsTask Initialize(Microsoft.VisualStudio.Shell.Interop.IAsyncServiceProvider asyncServiceProvider,
-            IProfferAsyncService pProfferService, IAsyncProgressCallback pProgressCallback)
+        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            return ThreadHelper.JoinableTaskFactory.RunAsync<object>(async () =>
-            {
-                BackgroundThreadInitialization();
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                MainThreadInitialization();
-                return null;
-            }).AsVsTask();
+            BackgroundThreadInitialization();
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            _logger.Log("Getting somewhere with VSNerd");
+            await MainThreadInitializationAsync();
         }
 
         private void BackgroundThreadInitialization()
@@ -47,9 +47,9 @@ namespace VsNerdX
             Instance = this;
         }
         
-        private void MainThreadInitialization()
+        private async System.Threading.Tasks.Task MainThreadInitializationAsync()
         {
-            Dte = GetService(typeof(DTE)) as DTE2;
+            Dte = await GetServiceAsync(typeof(_DTE)) as DTE2;
             var solutionExplorerControl = new HierarchyControl(this, _logger);
 
             _commandProcessor = new CommandProcessor(solutionExplorerControl, _logger);

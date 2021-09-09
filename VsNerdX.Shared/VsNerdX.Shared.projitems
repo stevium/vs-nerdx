@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0372f1eb-e64b-49ab-bdd9-ad30c0348960</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>VsNerdX.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Command\CommandKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\CommandState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\CloseNodeRecursively.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\CloseParentNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\OpenNodeRecursively.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Directory\OpenOrCloseNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\ExecutionContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\ExecutionResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CopyText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\CutFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Delete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Paste.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\FileSystem\Rename.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\File\OpenSplit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\File\OpenVSplit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\File\PreviewFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\File\ShowAllFiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\ClearExecutionStack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\EnterFindMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\EnterGoMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\EnterYankMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\LeaveFindMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\General\ToggleHelp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\ICommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\IExecutionContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\InputMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoDown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToBottom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToFirstChild.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToLastChild.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToParent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToRoot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToTop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\CommandProcessor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\HelpViewControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\IHierarchyControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SolutionExplorerControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SolutionExplorerDispatchCondition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\ConditionalKeyDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\IDispatchCondition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\IKeyDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\IKeyDispatcherTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\KeyDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dispatcher\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\AsyncPackageHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\AsyncPackageRegistrationAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\DebugLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ExtensionMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\ServiceLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\TreeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\VsixManifest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsNerdXPackage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)VSPackage.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)app.config" />
+    <None Include="$(MSBuildThisFileDirectory)Key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Icon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Preview.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VsNerdXPackage.ico" />
+  </ItemGroup>
+</Project>
