@@ -20,7 +20,9 @@ namespace VsNerdX.Command.Navigation
         {
             try
             {
-                Dte.ExecuteCommand("View.Open");
+                Dte.ExecuteCommand("SolutionExplorer.ToggleSingleClickPreview");
+                Dte.ExecuteCommand("Window.ActivateDocumentWindow");
+                Dte.ExecuteCommand("Window.KeepTabOpen");
                 Dte.ExecuteCommand("Window.NewVerticalTabGroup");
             }
             catch (Exception e) { }
