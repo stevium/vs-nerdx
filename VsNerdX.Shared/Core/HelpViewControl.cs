@@ -91,6 +91,7 @@ namespace VsNerdX.Core
                 new Bold(new Run(" K")), new Run(": go to first child"), new LineBreak(),
                 new Bold(new Run(" gg")), new Run(": go to top"), new LineBreak(),
                 new Bold(new Run(" G")), new Run(": go to bottom"), new LineBreak(), new LineBreak(),
+                new Bold(new Run(" Tab")), new Run(": leave Nerdx"), new LineBreak(), new LineBreak(),
 
                 new Bold(new Run(" Node editing mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),

@@ -30,6 +30,7 @@ Currently supported Visual Studio versions are 2017, 2019, and 2022.
 * `K` - go to first child
 * `gg` - go to top
 * `G` - go to bottom
+* `Tab` - leave nerdX
 
 #### Node editing mappings
 * `dd` - delete 

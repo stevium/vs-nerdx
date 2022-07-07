@@ -71,6 +71,7 @@ namespace VsNerdX.Core
 
         private void InitializeCommands()
         {
+            commands.Add(new CommandKey(InputMode.Normal, Keys.Tab), new LeaveNerdx(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.X), new CloseParentNode(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.O), new OpenOrCloseNode(this._hierarchyControl));
             commands.Add(new CommandKey(InputMode.Normal, Keys.O | Keys.Shift), new OpenNodeRecursively(this._hierarchyControl));
