@@ -32,6 +32,11 @@ Currently supported Visual Studio versions are 2017, 2019, and 2022.
 * `G` - go to bottom
 * `Tab` - leave nerdX
 
+#### Project item mappings
+* `nf` - new folder
+* `nc` - new class
+* `ns` - new scaffolded item
+
 #### Node editing mappings
 * `dd` - delete 
 * `cc` - cut 

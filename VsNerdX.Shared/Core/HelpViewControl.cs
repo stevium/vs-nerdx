@@ -81,6 +81,11 @@ namespace VsNerdX.Core
                 new Bold(new Run(" i")), new Run(": open split"), new LineBreak(),
                 new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(), new LineBreak(),
                 
+                new Bold(new Run("Project mappings")), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
+                new Bold(new Run(" nf")), new Run(": new folder"), new LineBreak(),
+                new Bold(new Run(" nc")), new Run(": new class"), new LineBreak(),
+                new Bold(new Run(" ns")), new Run(": new scaffolded item"), new LineBreak(), new LineBreak(),
                 
                 new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
