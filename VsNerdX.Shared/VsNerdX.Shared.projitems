@@ -45,6 +45,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToRoot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoToTop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\GoUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Navigation\LeaveNerdx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command\Project\AddItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\CommandProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\HelpViewControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\IHierarchyControl.cs" />

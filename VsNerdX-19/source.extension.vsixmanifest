@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VSNerdX_19.c6cc12bc-d3f4-4cda-a934-8212ea728ff8" Version="2.4.0" Language="en-US" Publisher="Miloš Stevanović" />
+        <Identity Id="VSNerdX_19.c6cc12bc-d3f4-4cda-a934-8212ea728ff8" Version="2.4.0.300" Language="en-US" Publisher="Miloš Stevanović" />
         <DisplayName>VsNerdX 2015-2019</DisplayName>
         <Description xml:space="preserve">NERDTree inspired Solution Explorer for Visual Studio</Description>
         <MoreInfo>https://github.com/stevium/vs-nerdx</MoreInfo>

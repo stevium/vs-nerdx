@@ -81,6 +81,11 @@ namespace VsNerdX.Core
                 new Bold(new Run(" i")), new Run(": open split"), new LineBreak(),
                 new Bold(new Run(" s")), new Run(": open vertical split"), new LineBreak(), new LineBreak(),
                 
+                new Bold(new Run("Project mappings")), new LineBreak(),
+                new Run("--------------------------"), new LineBreak(),
+                new Bold(new Run(" nf")), new Run(": new folder"), new LineBreak(),
+                new Bold(new Run(" nc")), new Run(": new class"), new LineBreak(),
+                new Bold(new Run(" ns")), new Run(": new scaffolded item"), new LineBreak(), new LineBreak(),
                 
                 new Bold(new Run(" Tree navigation mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
@@ -91,6 +96,7 @@ namespace VsNerdX.Core
                 new Bold(new Run(" K")), new Run(": go to first child"), new LineBreak(),
                 new Bold(new Run(" gg")), new Run(": go to top"), new LineBreak(),
                 new Bold(new Run(" G")), new Run(": go to bottom"), new LineBreak(), new LineBreak(),
+                new Bold(new Run(" Tab")), new Run(": leave Nerdx"), new LineBreak(), new LineBreak(),
 
                 new Bold(new Run(" Node editing mappings")), new LineBreak(),
                 new Run("--------------------------"), new LineBreak(),
