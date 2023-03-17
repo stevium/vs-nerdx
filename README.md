@@ -19,26 +19,26 @@ Currently supported Visual Studio versions are 2017, 2019, and 2022.
 #### File node mappings
 * `<Enter>` - open file
 * `go` - preview file
-* `i` - open split
-* `s` - open vertical split
+* `h` - open split
+* `v` - open vertical split
 
 #### Tree navigation mappings
 * `P` - go to parent
-* `j` - go to next sibling
-* `J` - go to last child
-* `k` - go to prev sibling
-* `K` - go to first child
+* `t` - go to next sibling
+* `T` - go to last child
+* `s` - go to prev sibling
+* `S` - go to first child
 * `gg` - go to top
 * `G` - go to bottom
 
 #### Node editing mappings
-* `dd` - delete 
-* `cc` - cut 
+* `DD` - delete 
+* `dd` - cut 
 * `yy` - copy 
 * `yp` - copy full path
 * `yw` - copy visible text
 * `p` - paste 
-* `r` - rename
+* `l` - rename
 
 #### Tree filtering mappings
 * `I` - toggle show all files 
